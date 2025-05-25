@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Liste des éléments</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of items(); track item.id) {
+        <tr [class.table-active]="selectedItem()?.id === item.id"
+            (click)="onSelect(item)">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" 
+                    (click)="onDelete(item.id); $event.stopPropagation()">
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  @if (selectedItem()) {
+    <app-item-form 
+      [item]="selectedItem()!" 
+      (saved)="onItemSaved()">
+    </app-item-form>
+  }
+
+  <app-item-form (saved)="onItemSaved()"></app-item-form>
+</div>
