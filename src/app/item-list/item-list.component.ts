@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { Item } from '../models/item.model';
 import { ItemService } from '../services/item.service';
-import { ItemFormComponent } from '../item-form/item-form.component';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-item-list',
   standalone: true,
-  imports: [CommonModule, ItemFormComponent, MatTableModule,
+  imports: [CommonModule, MatTableModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
